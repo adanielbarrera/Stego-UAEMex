@@ -1,6 +1,6 @@
 __pycache__/
 *.py[cod]
 /build
-/dist/*.exe
-/dist/*.spec
+#/dist/*.exe
+#/dist/*.spec
 *.spec
