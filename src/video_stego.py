@@ -80,11 +80,9 @@ def bits_a_archivo(bits, carpeta_salida):
     except UnicodeDecodeError:
         nombre_archivo = "archivo_recuperado.bin"
     
-    # CORRECCIÓN: Si el nombre quedó vacío o son solo espacios, poner uno genérico
     if not nombre_archivo or not nombre_archivo.strip():
         nombre_archivo = "recuperado_sin_nombre.bin"
     
-    # Limpiar caracteres ilegales en Windows (por si acaso lee basura)
     nombre_archivo = "".join([c for c in nombre_archivo if c.isalnum() or c in "._- "])
 
     len_datos = struct.unpack("<I", data[indice:indice + 4])[0]
@@ -199,7 +197,6 @@ class VideoStegoApp(tk.Tk):
         self.geometry("720x520")
         self.resizable(False, False)
 
-        # Fuente y estilo minimalista
         self.style = ttk.Style(self)
         self.style.configure("TLabel", font=("SF Pro Text", 11))
         self.style.configure("TButton", font=("SF Pro Text", 11))

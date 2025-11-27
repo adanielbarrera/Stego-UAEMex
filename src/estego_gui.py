@@ -5,10 +5,6 @@ import os
 import struct
 import sys
 
-# ==========================================
-# LÓGICA CENTRAL DE ESTEGANOGRAFÍA (CORREGIDA)
-# ==========================================
-
 # CONFIGURACIÓN
 # Cabecera: 'STG' (3) + Tamaño (4) + Extensión (8) = 15 bytes
 HEADER_SIZE = 15 
@@ -21,7 +17,6 @@ def prepare_blob(file_path):
     with open(file_path, "rb") as f:
         file_bytes = f.read()
     
-    # CORRECCIÓN: Reservamos 8 bytes para la extensión en lugar de 4
     # Usamos [:8] para asegurar que no se pase y ljust para rellenar con ceros
     ext_bytes = file_ext.encode('utf-8').ljust(8, b'\x00')[:8]
     
@@ -130,7 +125,7 @@ def extract_logic(stego_path):
          return False, f"Error crítico: {str(e)}"
 
 # ==========================================
-# INTERFAZ GRÁFICA (GUI) - IGUAL QUE ANTES
+# INTERFAZ GRÁFICA
 # ==========================================
 
 class StegoApp:
